@@ -7,7 +7,7 @@
         if (response.entries && typeof response.entries.feature_discovery_popup_config === "string") {
           var popup = JSON.parse(response.entries.feature_discovery_popup_config);
           popup.tag = "LOCKET GOLD";
-          popup.title = "Đỗ Khắc Sơn lên locket gold hộ rồi đó";
+          popup.title = "Đừng đùa\nvới thằng này";
           popup.feature_set = [{
             title: "tiktok : @*dokhacson*",
             body: "",
