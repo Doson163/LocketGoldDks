@@ -1,3 +1,29 @@
+// Customize the welcome popup displayed by this copy.
+(function (originalDone) {
+  $done = function (result) {
+    try {
+      if (result && typeof result.body === "string") {
+        var response = JSON.parse(result.body);
+        if (response.entries && typeof response.entries.feature_discovery_popup_config === "string") {
+          var popup = JSON.parse(response.entries.feature_discovery_popup_config);
+          popup.tag = "LOCKET GOLD";
+          popup.title = "Đỗ Khắc Sơn lên locket gold hộ rồi đó";
+          popup.feature_set = [{
+            title: "tiktok : @*dokhacson*",
+            body: "",
+            imageURL: "https://raw.githubusercontent.com/Doson163/LocketGoldDks/main/assets/img/dokhacson-avatar.png"
+          }];
+          response.entries.feature_discovery_popup_config = JSON.stringify(popup);
+          result.body = JSON.stringify(response);
+        }
+      }
+    } catch (error) {
+      // Preserve the original result if customization cannot be applied.
+    }
+    return originalDone(result);
+  };
+})($done);
+
 // ============================================================
 // Locket Remote Config Rewrite
 // Endpoint: firebaseremoteconfig.googleapis.com
